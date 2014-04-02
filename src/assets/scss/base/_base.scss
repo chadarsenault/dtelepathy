@@ -1,0 +1,40 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box
+;	-webkit-box-sizing: border-box;
+}
+html {
+	height: 100%;
+}
+html, body {
+	width: 100%;
+}
+body {
+	color: #555;
+	font: $book #{$base-size} $font-primary;
+}
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	font-family: $font-secondary;
+	font-weight: $light;
+	color: $color-primary;
+}
+h1 {
+	font-size: $header-size;
+	margin-bottom: $header-size;
+}
+h2 {
+	font-size: $header2-size;
+	margin-bottom: $header2-size;
+}
+a {
+	color: $color-link;
+	text-decoration: underline;
+
+	&:hover,
+	&:active {
+		text-decoration: none;
+	}
+}

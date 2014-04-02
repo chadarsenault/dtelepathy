@@ -1,0 +1,23 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "compass/support";
+@import "compass/css3/deprecated-support";
+
+// Remove the following if not needed
+@import "susy";
+@import "breakpoint";
+
+// ---------------------------------------------------------------------------
+// Basic Grid
+$show-grid-backgrounds  : false;
+
+$total-columns  		: 12;
+$column-width   		: 4.0rem;
+$gutter-width   		: 1.0rem;
+$grid-padding   		: $gutter-width;
+
+// Responsive Grid
+$small-screen			: 37.49rem; //600px
+$medium-screen			: 48.00rem; //768px
+$large-screen			: 60.09rem; //960px

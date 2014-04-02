@@ -1,0 +1,12 @@
+{
+	"name": "bower-scaffold",
+	"version": "0.0.1",
+
+	"dependencies": {
+		"grunt-scaffold-php": "git@bitbucket.org:chadarsenault/grunt-scaffold-php.git",
+		"jquery": "~1.11.0",
+		"normalize.css": null,
+		"livereload": "~2.0.8",
+		"html5shiv": "~3.7.0"
+	}
+}

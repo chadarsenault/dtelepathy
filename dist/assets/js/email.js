@@ -1,0 +1,2 @@
+/*! dtelepathy 02-04-2014 */
+!function(){"use strict";function a(a){var b=a.target.id;jQuery("#"+b+" .email-input").val("").prop({placeholder:"Oops! Try again!"})}jQuery("#email-form,#email-form2").on("submit",function(b){var c=jQuery(this).serialize();return jQuery.ajax({url:"/php/ajax/email.php",type:"POST",data:c,cache:!1,async:!0}).success(function(c){"success"===c?jQuery("#email-form,#email-form2").empty().append(jQuery("<h2>").addClass("center").text("Thank you for subscribing to Twine!")):a(b)}).fail(function(){a(b)}),!1})}();
