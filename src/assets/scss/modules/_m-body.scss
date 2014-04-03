@@ -1,3 +1,76 @@
+@-webkit-keyframes midloop {
+	0% {width:0;}
+	50% {width: 190px;}
+	100% {width:190px;}
+}
+@-webkit-keyframes rightloop {
+	0% {opacity:0;}
+	10% {opacity:0;}
+	20% {opacity:0;}
+	30% {opacity:0;}
+	40% {opacity:0;}
+	50% {opacity:1;}
+	60% {opacity:0;}
+	70% {opacity:1;}
+	80% {opacity:0;}
+	90% {opacity:1;}
+	100% {opacity:0;}
+}
+@-moz-keyframes midloop {
+	0% {width:0;}
+	50% {width: 190px;}
+	100% {width:190px;}
+}
+@-moz-keyframes rightloop {
+	0% {opacity:0;}
+	10% {opacity:0;}
+	20% {opacity:0;}
+	30% {opacity:0;}
+	40% {opacity:0;}
+	50% {opacity:1;}
+	60% {opacity:0;}
+	70% {opacity:1;}
+	80% {opacity:0;}
+	90% {opacity:1;}
+	100% {opacity:0;}
+}
+@-ms-keyframes midloop {
+	0% {width:0;}
+	50% {width: 190px;}
+	100% {width:190px;}
+}
+@-ms-keyframes rightloop {
+	0% {opacity:0;}
+	10% {opacity:0;}
+	20% {opacity:0;}
+	30% {opacity:0;}
+	40% {opacity:0;}
+	50% {opacity:1;}
+	60% {opacity:0;}
+	70% {opacity:1;}
+	80% {opacity:0;}
+	90% {opacity:1;}
+	100% {opacity:0;}
+}
+@keyframes midloop {
+	0% {width:0;}
+	50% {width: 190px;}
+	100% {width:190px;}
+}
+@keyframes rightloop {
+	0% {opacity:0;}
+	10% {opacity:0;}
+	20% {opacity:0;}
+	30% {opacity:0;}
+	40% {opacity:0;}
+	50% {opacity:1;}
+	60% {opacity:0;}
+	70% {opacity:1;}
+	80% {opacity:0;}
+	90% {opacity:1;}
+	100% {opacity:0;}
+}
+
 .body-container {
 	.body-content {
 		.body-section {
@@ -108,8 +181,30 @@
 					background-color: $color-primary;
 				}
 
+				.anim-warning1 {
+					position: absolute;
+					z-index: 1000;
+					left: 19px;
+					opacity: 0;
+					&.animate {
+						opacity:1;
+					}
+				}
+				.anim-warning2 {
+					position: absolute;
+					z-index: 1001;
+					right: 35px;
+					opacity: 0;
+					&.animate {
+						-webkit-animation: rightloop 2s infinite;
+						-moz-animation: rightloop 2s infinite;
+						-ms-animation: rightloop 2s infinite;
+						animation: rightloop 2s infinite;
+					}
+				}
+
 				.anim-left {
-					top:0px;
+					bottom:0px;
 					left:0px;
 					height: 0%;
 					width: 145px;
@@ -118,13 +213,28 @@
 					top:0px;
 					height: 100%;
 					left: 145px;
-					width: 0;
+					width: 0px;
+
+					&.animate {
+						-webkit-animation: midloop 2s infinite;
+						-moz-animation: midloop 2s infinite;
+						-ms-animation: midloop 2s infinite;
+						animation: midloop 2s infinite;
+					}
 				}
 				.anim-right {
-					top:0px;
+					bottom:0px;
 					left:335px;
-					width: 145px;
-					height: 0%;
+					width:145px;
+					height:100%;
+					opacity:0%;
+
+					&.animate {
+						-webkit-animation: rightloop 2s infinite;
+						-moz-animation: rightloop 2s infinite;
+						-ms-animation: rightloop 2s infinite;
+						animation: rightloop 2s infinite;
+					}
 				}
 
 			}

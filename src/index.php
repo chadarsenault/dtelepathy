@@ -31,14 +31,16 @@ require $_SERVER['DOCUMENT_ROOT'].'/php/tmpl/body.php';
 	</div>
 	<div class="body-section details">
 		<div class="body-details">
-			<div class="details-content">
+			<div class="details-content" id="details-content">
 				<h1>Connect your things<br>to the Internet,<br>without a nerd degree.</h1>
 				<div class="anim-container">
 					<div class="anim-content">
 						<div class="anim-img"><img src="/assets/img/animation-1.png"></div>
-						<div class="anim-left"></div>
-						<div class="anim-mid"></div>
-						<div class="anim-right"></div>
+						<div id="anim-warning1" class="anim-warning1"><img src="/assets/img/warning.png"></div>
+						<div id="anim-left" class="anim-left"></div>
+						<div id="anim-mid" class="anim-mid"></div>
+						<div id="anim-right" class="anim-right"></div>
+						<div id="anim-warning2" class="anim-warning2"><img src="/assets/img/warning.png"></div>
 					</div>
 				</div>
 				<p><strong>Twine is the simplest possible way to get the objects in your life texting, tweeting or emailing.</strong></p>
@@ -68,5 +70,66 @@ require $_SERVER['DOCUMENT_ROOT'].'/php/tmpl/footer.php';
 ?>
 <!-- begin foot js -->
 <script src="/assets/js/email.js"></script>
+<script>
+(function() {
+	var s, ScrollWidget = {
+		settings: {
+			content: document.getElementById('details-content'),
+			animWarning1: $('#anim-warning1'),
+			animWarning2: $('#anim-warning2'),
+			animLeft: $('#anim-left'),
+			animMid: $('#anim-mid'),
+			animRight: $('#anim-right'),
+			doc: Math.max(document.documentElement.clientHeight, document.body.clientHeight, window.innerHeight || 0)
+		},
+
+		init: function() {
+			s = this.settings;
+			this.onResize();
+			this.onScroll();
+		},
+
+		getPos: function() {
+			var contentHeight = s.content.scrollHeight;
+			var viewportHeight = window.innerHeight;
+			var scrollPos = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+			var scrollMax = parseInt(s.content.offsetTop);
+			var scrollPercent = Math.min((scrollPos / scrollMax), 1);
+			progressMax = $('.anim-content').height();
+			$(s.animLeft).height(progressMax*scrollPercent);
+
+			if(scrollPercent >= 0.81) {
+				$(s.animMid).addClass('animate');
+				$(s.animRight).addClass('animate');
+				$(s.animWarning1).addClass('animate');
+				$(s.animWarning2).addClass('animate');
+			} else {
+				if($(s.animMid).hasClass('animate')) {
+					$(s.animMid).removeClass('animate');
+				}
+				if($(s.animRight).hasClass('animate')) {
+					$(s.animRight).removeClass('animate');
+				}
+				if($(s.animWarning1).hasClass('animate')) {
+					$(s.animWarning1).removeClass('animate');
+				}
+				if($(s.animWarning2).hasClass('animate')) {
+					$(s.animWarning2).removeClass('animate');
+				}
+			}
+		},
+
+		onResize: function() {
+			window.addEventListener('resize', ScrollWidget.getPos);
+		},
+
+		onScroll: function() {
+			window.addEventListener('scroll', ScrollWidget.getPos);
+		}
+	};
+
+	ScrollWidget.init();
+})();
+</script>
 <!-- end foot js -->
 <?php require $_SERVER['DOCUMENT_ROOT'].'/php/tmpl/end.php';
